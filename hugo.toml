@@ -1,0 +1,31 @@
+baseURL = "https://go-puppet.github.io/"
+title = "go-puppet"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "404"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[[params.phases]]
+  name = "Lexer & parser"
+  status = "ready"
+  blurb = "A hand-written lexer and recursive-descent parser for the Puppet 8 grammar: literals and `${}` interpolation, heredocs (`@(TAG)`, `:syntax`, `|` margins, `-` chomp), data-type expressions, the full operator precedence ladder, selectors, `if`/`unless`/`case`, and the whitespace-sensitive `[`."
+[[params.phases]]
+  name = "AST (Puppet::Pops)"
+  status = "ready"
+  blurb = "A faithful `Puppet::Pops`-style node model — resources, defaults, overrides, collectors, virtual/exported forms, class/define/node/function definitions, calls with lambdas, and relationship chaining — with a compact `Sexpr` renderer for tests."
+[[params.phases]]
+  name = "Evaluator"
+  status = "ready"
+  blurb = "Scopes (top/node/local, `$facts`, `$::top`-scope), full expression semantics, data-type checks via **go-pcore**, class/defined-type instantiation (`include`/`require`/`contain`, `inherits`), iteration (`each`/`map`/`filter`/`reduce`/`with`/`slice`), and a built-in function set including `lookup()` via **go-hiera**."
+[[params.phases]]
+  name = "Catalog compiler"
+  status = "ready"
+  blurb = "Manifests compile to a catalog: a resource graph with containment, relationship (`->`/`~>`/`<-`/`<~`) and metaparameter (`require`/`before`/`notify`/`subscribe`) edges, serialized to the Puppet catalog JSON shape."
+[[params.phases]]
+  name = "Registry seam"
+  status = "ready"
+  blurb = "`Evaluator.RegisterFunction(name, fn)` adds or overrides functions at runtime — the seam **go-ruby-puppet** plugs into to contribute Ruby-defined custom functions and types, without this library depending on the Ruby VM."
+[[params.phases]]
+  name = "Templates, exported resources & stdlib"
+  status = "planned"
+  blurb = "EPP/ERB templates, resource **defaults**/**overrides**/**collectors**, exported resources / PuppetDB, the full stdlib module and the plan/apply language are staged for v0.2. They parse today; evaluating them returns a clear \"staged for v0.2\" error — no fake stubs."
