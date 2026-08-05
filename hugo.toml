@@ -26,6 +26,14 @@ disableKinds = ["taxonomy", "term", "RSS", "sitemap", "404"]
   status = "ready"
   blurb = "`Evaluator.RegisterFunction(name, fn)` adds or overrides functions at runtime — the seam **go-ruby-puppet** plugs into to contribute Ruby-defined custom functions and types, without this library depending on the Ruby VM."
 [[params.phases]]
-  name = "Templates, exported resources & stdlib"
-  status = "planned"
-  blurb = "EPP/ERB templates, resource **defaults**/**overrides**/**collectors**, exported resources / PuppetDB, the full stdlib module and the plan/apply language are staged for v0.2. They parse today; evaluating them returns a clear \"staged for v0.2\" error — no fake stubs."
+  name = "Templates, exported resources, plans & stdlib"
+  status = "ready"
+  blurb = "EPP/ERB templates (`epp`/`inline_epp`/`template`/`inline_template`), resource **defaults**/**overrides**/**collectors**, exported resources, the Bolt-style plan/apply language and an extensive stdlib — all implemented and evaluated (no fake stubs), through injectable template, exported-resource and plan-executor seams."
+[[params.phases]]
+  name = "HCL2 front-end"
+  status = "ready"
+  blurb = "`hcl.Parse` reads a Terraform-style **HCL2** manifest and produces the very same `ast.Program` the native Puppet parser does, so an HCL2 manifest compiles to an **identical catalog** through the same evaluator. The v0.1 mapping covers `resource`/`locals` blocks, literals, templates, traversal, operators and relationships."
+[[params.phases]]
+  name = "Type constructors & HCL2 v0.2"
+  status = "active"
+  blurb = "Still in progress, returning a clear error rather than a fake stub: Pcore **type constructors** beyond the scalar core (`Timestamp()`, `SemVer()`, …), and the HCL2 front-end's v0.2 expression set (function calls, `a ? b : c`, `for` comprehensions, `%{…}` directives, additional block types)."
