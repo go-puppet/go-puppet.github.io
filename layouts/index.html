@@ -41,15 +41,13 @@
   <div class="hero"><div class="wrap">
     <div>
       <h1 class="head">go-puppet</h1>
-      <p class="sub">The Puppet language in pure Go — lexer, parser, Puppet::Pops AST, evaluator and catalog compiler, no cgo.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="/docs/">{{ partial "icons/book.html" . }}Documentation</a>
-        <a class="btn btn-ghost" href="https://github.com/go-puppet/puppet">{{ partial "icons/github.html" . }}GitHub</a>
-      </div>
-      <div class="trust">{{ if not (partial "mantra-on.html" $) }}<span class="pill">pure Go · zero cgo</span>{{ end }}<span class="pill">Puppet 8 grammar</span><span class="pill">Puppet::Pops AST</span><span class="pill">evaluator</span><span class="pill">catalog compiler</span><span class="pill">EPP/ERB + plans</span><span class="pill">HCL2 front-end</span><span class="pill">types via go-pcore</span><span class="pill">lookup via go-hiera</span><span class="pill">facts via go-facter</span><span class="pill">100% coverage</span><span class="pill">6 arches</span></div>
+      <p class="sub">The Puppet language in {{ if partial "mantra-on.html" . }}Go{{ else }}pure Go{{ end }} — lexer, parser, Puppet::Pops AST, evaluator and catalog compiler, {{ if not (partial "mantra-on.html" $) }}no cgo{{ end }}.</p>
+      {{/* [[params.cta]] in hugo.toml: the kit renders the row */}}
+      {{ partial "cta.html" . }}
+      <div class="trust">{{ if not (partial "mantra-on.html" $) }}{{ if not (partial "mantra-on.html" $) }}<span class="pill">pure Go · zero cgo</span>{{ end }}{{ end }}<span class="pill">Puppet 8 grammar</span><span class="pill">Puppet::Pops AST</span><span class="pill">evaluator</span><span class="pill">catalog compiler</span><span class="pill">EPP/ERB + plans</span><span class="pill">HCL2 front-end</span><span class="pill">types via go-pcore</span><span class="pill">lookup via go-hiera</span><span class="pill">facts via go-facter</span><span class="pill">100% coverage</span><span class="pill">6 arches</span></div>
       <div class="legacy"><div class="badges">
       <a href="/docs/"><img alt="Documentation (MkDocs Material + mike)" src="https://img.shields.io/badge/docs-mkdocs--material-FBBF24"></a>
-      {{ if not (partial "mantra-on.html" $) }}<a href="https://github.com/go-puppet/puppet/blob/main/LICENSE"><img alt="License: BSD-3-Clause" src="https://img.shields.io/badge/license-BSD--3--Clause-blue"></a>{{ end }}
+      {{ if not (partial "mantra-on.html" $) }}{{ if not (partial "mantra-on.html" $) }}<a href="https://github.com/go-puppet/puppet/blob/main/LICENSE"><img alt="License: BSD-3-Clause" src="https://img.shields.io/badge/license-BSD--3--Clause-blue"></a>{{ end }}{{ end }}
       <a href="https://go.dev/dl/"><img alt="Go 1.26.4+" src="https://img.shields.io/badge/go-1.26.4%2B-00ADD8"></a>
       <a href="https://github.com/go-puppet/puppet"><img alt="Coverage 100%" src="https://img.shields.io/badge/coverage-100%25-1a7f37"></a>
     </div></div>
